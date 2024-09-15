@@ -1,42 +1,52 @@
 import React from "react";
 import { useState } from "react";
 
-// Define the App component
-const App = () => {
-  // Use array destructuring to create a state variable `num` and an `setNum` function to update it
-  const [num, setNum] = useState(0);
+function App() {
+  // const [counter, setCounter] = useState(5);
+  let [counter, setCounter] = useState(5);
 
-  // Define a function to increment the counter
-  const addCounter = () => {
-    // Update the state by adding 1 to the current value
-    setNum(num + 1);
+  // let counter = 5;
+
+  const addValue = () => {
+    // console.log("Value Added", Math.random());
+    // console.log("Value Added", counter);
+    // counter = counter + 1;
+
+    // setCounter(counter + 1);
+
+    if (counter < 9999) {
+      setCounter(counter + 1);
+    } else {
+      alert("Counter is 9999");
+      setCounter((counter = 0));
+    }
   };
 
-  // Define a function to decrement the counter
-  const lessCounter = () => {
-    // Update the state by subtracting 1 from the current value
-    setNum(num - 1);
+  const resetValue = () => {
+    setCounter((counter = 0));
+  };
+
+  const removeValue = () => {
+    // console.log("Value Remove", counter);
+    // setCounter(counter - 1);
+    if (counter > 0) {
+      setCounter(counter - 1);
+    } else alert("Counter is 0");
   };
 
   return (
     //*THESE ARE CALLED React Fragments: <> </>
     //* Return a JSX element that represents the app
     <div className="black glow">
-      {/* { // Display the title of the app */}
       <h1>React Counter</h1>
-      {/* // Display the current counter value */}
-      <h1>{num}</h1>
-      {/* // Create a button to increment the counter */}
-      <button onClick={addCounter}>Add </button>
-      {/* // Create a button to decrement the counter */}
-      <button onClick={lessCounter}>Delete </button>
-      {/* 
-      // Alternative way to display the buttons with the current counter value
-      <button onClick={addCounter}>add {num}</button>
-      <button onClick={lessCounter}>less {num}</button>
-       */}
+      <h2>Counter value: {counter}</h2>
+      <button onClick={addValue}>Add Value</button>
+      <br />
+      <button onClick={removeValue}>Add Remove</button>
+      <p>Footer: {counter}</p>
+      <button onClick={resetValue}>Reset Counter</button>
     </div>
   );
-};
+}
 
 export default App;
